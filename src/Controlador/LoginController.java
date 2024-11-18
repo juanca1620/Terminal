@@ -44,7 +44,7 @@ public class LoginController {
         return usuario;
     }
     
-    public Empresa buscarEmpresaPorAdmin(AdminFlota admin) {
+    public Caseta buscarCasetaPorAdmin(AdminFlota admin) {
         Caseta[][] casetas = Singleton.getINSTANCE().getCasetas();
 
 
@@ -56,7 +56,7 @@ public class LoginController {
                     Empresa empresa = caseta.getEmpresa();
 
                     if (empresa.getAdmin() != null && empresa.getAdmin().equals(admin)) {
-                        return empresa;
+                        return caseta;
                     }
                 }
             }
