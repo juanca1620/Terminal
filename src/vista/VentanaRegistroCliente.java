@@ -174,6 +174,8 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
             
             controller.validarUsuario(cliente);
             
+            controller.guardarUsuario(cliente);
+            
             this.dispose();
             
             new VentanaCliente(cliente).setVisible(true);

@@ -75,4 +75,8 @@ public class Empresa implements Serializable {
         }
         return viajes;
     }
+    
+    public void addBuz(Buz buz){
+        buces.add(buz);
+    }
 }

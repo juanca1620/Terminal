@@ -32,7 +32,7 @@ public class Singleton {
         usuarios = leerUsuarios();
     }
     
-    public Caseta[][] leerCasetas(){
+    private Caseta[][] leerCasetas(){
         try (FileInputStream archivo = new FileInputStream(CASETASDATA);
              ObjectInputStream lector = new ObjectInputStream(archivo)){
             return (Caseta[][])lector.readObject();
@@ -57,7 +57,7 @@ public class Singleton {
         }
     }
     
-    public IList<Usuario> leerUsuarios(){
+    private IList<Usuario> leerUsuarios(){
         try (FileInputStream archivo = new FileInputStream(USERSDATA);
              ObjectInputStream lector = new ObjectInputStream(archivo)){
             return (Lista<Usuario>)lector.readObject();

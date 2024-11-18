@@ -6,6 +6,7 @@ package modelo;
 
 import java.io.Serializable;
 import util.IList;
+import util.Lista;
 
 /**
  *
@@ -14,10 +15,12 @@ import util.IList;
 public class Buz implements Serializable{
     
     private IList<Viaje> viajes;
+    private String placa;
     private int asientos;
     
-    public Buz(IList<Viaje> viajes, int asientos) {
-        this.viajes = viajes;
+    public Buz(int asientos,String placa) {
+        this.viajes = new Lista<>();
+        this.placa = placa;
         this.asientos = asientos;
     }
     
@@ -49,6 +52,14 @@ public class Buz implements Serializable{
 
     public void setAsientos(int asientos) {
         this.asientos = asientos;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
     
     

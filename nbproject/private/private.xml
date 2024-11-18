@@ -26,7 +26,9 @@
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/vista/VentanaRegistroFlota.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/util/Lista.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/AdminTerminal.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/vista/VentanaMenuAdminFlota.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/vista/VentanaAdminTerminal.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/vista/VentanaGestionBuses.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/Controlador/AdminTerminalController.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/util/DateTransformer.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/Controlador/CasetaController.java</file>
@@ -36,6 +38,7 @@
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/Controlador/ControladorUsers.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/singleton/Singleton.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/Mensaje.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/Controlador/BucesController.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/exceptions/CredencialesInvalidasException.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/exceptions/NoEncontradoException.java</file>
         </group>
