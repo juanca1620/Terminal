@@ -8,8 +8,8 @@ package exceptions;
  *
  * @author USUARIO
  */
-public class FechaNoValidaException extends RuntimeException{
-    public FechaNoValidaException(String objeto){
-        super("Fecha de" + objeto + " no valida");
+public class CasetaLlenaException extends  Exception{
+    public CasetaLlenaException (){
+        super("Error:Esta caseta esta llena");
     }
 }

@@ -4,7 +4,7 @@
  */
 package modelo;
 
-import exceptions.FechaNacimientoNoValidaException;
+import exceptions.FechaNoValidaException;
 import java.time.LocalDateTime;
 
 /**
@@ -20,7 +20,7 @@ public class Persona extends Usuario{
     public Persona(String nombre, String cedula, LocalDateTime fecha_nacimiento, String userName, String contrasenna, String rol) {
         super(userName, contrasenna, rol);
         if(fecha_nacimiento.isAfter(LocalDateTime.now())){
-            throw new FechaNacimientoNoValidaException();
+            throw new FechaNoValidaException("nacimiento");
         }
         this.nombre = nombre;
         this.cedula = cedula;

@@ -8,8 +8,8 @@ package exceptions;
  *
  * @author USUARIO
  */
-public class FechaNoValidaException extends RuntimeException{
-    public FechaNoValidaException(String objeto){
-        super("Fecha de" + objeto + " no valida");
+public class HorariosTrocadosException extends  Exception{
+    public HorariosTrocadosException (String objeto,String razon){
+        super("Las horas del " + objeto + "Se cruza con " + razon);
     }
 }

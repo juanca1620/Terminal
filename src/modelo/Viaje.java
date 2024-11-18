@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import exceptions.FechaNoValidaException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import util.IList;
@@ -24,9 +25,13 @@ public class Viaje implements Serializable{
     private LocalDateTime horaFin;
     private LocalDateTime fechaCreacion;
     private int cuposMaximos;
+    private double costo;
     private IQueue<Reserva> listaEspera;
     
-    public Viaje(String nombre_empresa, String lugarOrigen, String lugarDestino, LocalDateTime horaInicio, LocalDateTime horaFin, int cuposMaximos) {
+    public Viaje(String nombre_empresa, String lugarOrigen, String lugarDestino, LocalDateTime horaInicio, LocalDateTime horaFin, int cuposMaximos,double costo) {
+        if(horaInicio.isAfter(horaFin) || horaInicio.isBefore(LocalDateTime.now()) || horaFin.isBefore(LocalDateTime.now())){
+            throw new FechaNoValidaException("del viaje");
+        }
         this.nombre_empresa = nombre_empresa;
         this.lugarOrigen = lugarOrigen;
         this.lugarDestino = lugarDestino;
@@ -34,6 +39,7 @@ public class Viaje implements Serializable{
         this.horaFin = horaFin;
         this.fechaCreacion = LocalDateTime.now();
         this.cuposMaximos = cuposMaximos;
+        this.costo = costo;
         this.listaEspera = new Queue<>();
     }
     public boolean isThereSpace(Reserva reserva){
@@ -99,5 +105,30 @@ public class Viaje implements Serializable{
     public void setCuposMaximos(int cuposMaximos) {
         this.cuposMaximos = cuposMaximos;
     }
+
+    public LocalDateTime getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
+    }
+
+    public IQueue<Reserva> getListaEspera() {
+        return listaEspera;
+    }
+
+    public void setListaEspera(IQueue<Reserva> listaEspera) {
+        this.listaEspera = listaEspera;
+    }
+    
     
 }

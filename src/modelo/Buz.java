@@ -62,5 +62,8 @@ public class Buz implements Serializable{
         this.placa = placa;
     }
     
+    public void addViaje(Viaje viaje){
+        viajes.add(viaje);
+    }
     
 }

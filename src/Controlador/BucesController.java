@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import exceptions.CasetaLlenaException;
 import exceptions.IdentificadorRepetidoException;
 import modelo.Buz;
 import modelo.Caseta;
@@ -45,7 +46,10 @@ public class BucesController {
         return null;
     }
     
-    public void agregarBuz(Buz buz) throws IdentificadorRepetidoException{
+    public void agregarBuz(Buz buz) throws IdentificadorRepetidoException, CasetaLlenaException{
+        if(caseta.getSlots() <= empresa.getBuces().size()){
+            throw new CasetaLlenaException();
+        }
         Buz aux = buscarBusPorPlaca(buz.getPlaca());
         if(aux != null){
             throw new IdentificadorRepetidoException("Placa");

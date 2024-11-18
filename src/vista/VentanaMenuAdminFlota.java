@@ -135,10 +135,10 @@ public class VentanaMenuAdminFlota extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionBusessActionPerformed
 
     private void btnGestionViajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionViajesActionPerformed
-        // TODO add your handling code here:
-      //  VentanaGestionViaje vgv = new VentanaGestionViaje(empresa,admin);
-      //  vgv.setVisible(true);
-      //  this.dispose();
+
+        VentanaGestionViaje vgv = new VentanaGestionViaje(caseta);
+        vgv.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnGestionViajesActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

@@ -320,7 +320,7 @@ public class VentanaRegistroFlota extends javax.swing.JFrame {
             String ubicacion = txtUbicacion.getText();
             double precio = Double.parseDouble(txtValorCas.getText());
             int cantidadPlacetas = Integer.parseInt(txtCantidadPla.getText());
-            controller.guardarEmpresa(empresa, NIT, precio, ubicacion);
+            controller.guardarEmpresa(empresa, cantidadPlacetas, precio, ubicacion);
             JOptionPane.showMessageDialog(null, "Empresa guardada con exito");
             cargarInfo();
         } catch (Exception e) {
