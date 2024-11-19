@@ -29,7 +29,7 @@ public class ViajeController {
         this.empresa = caseta.getEmpresa();
     }
     
-    public Viaje crearViaje(String codigo,String lugarDestino,LocalDateTime horaInicio,LocalDateTime horaFin,double costo){
+    public Viaje crearViaje(String codigo,String lugarDestino,LocalDateTime horaInicio,LocalDateTime horaFin,double costo,int cupos){
         return new Viaje(
                 codigo,
                 empresa.getNombreEmpresa(), 
@@ -37,7 +37,7 @@ public class ViajeController {
                 lugarDestino,
                 horaInicio, 
                 horaFin, 
-                caseta.getSlots(),
+                cupos,
                 costo);
     }
     

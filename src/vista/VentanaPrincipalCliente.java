@@ -421,19 +421,33 @@ public class VentanaPrincipalCliente extends javax.swing.JFrame {
         try {
             String codigoViaje = cboCodigoViaje.getSelectedItem().toString();
             int cantidadPuestos = (int) jsCantidad.getValue();
-            
+
             Viaje viaje = controller.obtenerViajePorCodigo(codigoViaje);
-            
+
             Reserva reserva = new Reserva(cliente, cantidadPuestos, viaje);
+
+            controller.validarReserva(reserva);
+
+            boolean encolar = !controller.isThereSpace(reserva);
             
-            controller.agregarReserva(reserva);
-            
-            JOptionPane.showMessageDialog(null, "Reserva guardada cone exito");
-            
+            if(encolar){
+                int respuesta = JOptionPane.showConfirmDialog(null, "Quieres apuntarte a la linea de espera?");
+                boolean respuestaB = JOptionPane.YES_OPTION == respuesta;
+                
+                if(respuestaB){
+                    controller.enconlarReserva(reserva);
+                    JOptionPane.showMessageDialog(null, "Tu reserva fue encolada con exito");
+                }
+                
+            }else{
+                controller.agregarReserva(reserva);
+                JOptionPane.showMessageDialog(null, "Reserva guardada cone exito");
+            }
+
             traerInfoCliente();
-        } catch (Exception e) {
+        }  catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
-        } 
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

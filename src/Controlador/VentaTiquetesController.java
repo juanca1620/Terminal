@@ -48,11 +48,15 @@ public class VentaTiquetesController {
     }
     
     public void CancelarReserva(Reserva reserva,String razon) throws ReservaAceptadaException{
+        Viaje viaje = reserva.getViaje();
+        
         if(reserva.getEstado().equals(Reserva.ACEPTADA)){
             throw new ReservaAceptadaException();
         }
         
         reserva.devolorverReserva(razon);
+        
+        viaje.desencolar();
         
         Singleton.getINSTANCE().escribirSingleton();
     }

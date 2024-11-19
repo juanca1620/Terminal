@@ -271,18 +271,22 @@ public class VentanaGestionViaje extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         try {
             String destino = txtDestino.getText();
+            
+            
             LocalDateTime horaLlegada = DateTransformer.DateToLocalDateTime(jdFechaLlegada.getDate())
-                    .plusHours(Integer.parseInt(cboHoraLlegada.getSelectedItem().toString()));
+                    .withHour(Integer.parseInt(cboHoraLlegada.getSelectedItem().toString()));
+
             LocalDateTime horaSalida = DateTransformer.DateToLocalDateTime(jdFechaSalida.getDate())
-                    .plusHours(Integer.parseInt(cboHoraSalida.getSelectedItem().toString()));
+                    .withHour(Integer.parseInt(cboHoraSalida.getSelectedItem().toString()));
+
             double costo = Double.parseDouble(txtCosto.getText());
             String codigo = txtCodigo.getText();
-            
+
             String placa = cboBuces.getSelectedItem().toString();
             Buz buz = controller.obtenerBuzPorPlaca(placa);
             
             
-            Viaje viaje = controller.crearViaje(codigo,destino, horaSalida, horaSalida, costo);
+            Viaje viaje = controller.crearViaje(codigo,destino, horaLlegada, horaSalida, costo,buz.getAsientos());
             
             controller.agregarViaje(buz, viaje);
             

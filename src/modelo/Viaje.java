@@ -7,6 +7,7 @@ package modelo;
 import exceptions.FechaNoValidaException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import util.DateFormatter;
 import util.IList;
 import util.IQueue;
 import util.Lista;
@@ -177,4 +178,24 @@ public class Viaje implements Serializable{
         return null;
     }
     
+    public void encolarListaEsperta (Reserva reserva){
+        listaEspera.enQueue(reserva);
+    }
+    
+    public Reserva obtenerPrimeroEnCola (Reserva reserva){
+        return listaEspera.peek();
+    }
+    
+    public void desencolar (){
+        if(!listaEspera.isEmpety()){
+            Reserva reserva = listaEspera.peek();
+            if(reserva.getViaje().isThereSpace(reserva)){
+                Reserva reservaAux = listaEspera.deQueue();
+                reservas.add(reservaAux);
+                Mensaje mensaje = new Mensaje("Sistema", "Tu reserva para el destiono " + 
+                        reservaAux.getViaje().getLugarDestino() + " se ha hecho activa");
+                reservaAux.getCliente().agregarMensaje(mensaje);
+            }
+        }
+    }
 }

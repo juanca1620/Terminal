@@ -22,7 +22,6 @@ public class VentanaBuzonCliente extends javax.swing.JFrame {
         initComponents();
         this.cliente = cliente;
         mostrarMensajes(cliente.getBuzon());
-        taMensajes.setEnabled(false);
     }
 
     /**

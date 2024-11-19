@@ -4,7 +4,6 @@
  */
 package modelo;
 
-import exceptions.FechaNacimientoNoValidaException;
 import java.time.LocalDateTime;
 
 /**

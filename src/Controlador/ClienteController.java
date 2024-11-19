@@ -5,6 +5,7 @@
 package Controlador;
 
 import exceptions.ClienteConReservaException;
+import exceptions.ResesrvaConMuchosAsientos;
 import exceptions.ViajeLlenoException;
 import modelo.Cliente;
 import modelo.Reserva;
@@ -24,7 +25,7 @@ public class ClienteController {
         this.cliente = cliente;
     }
 
-    public void agregarReserva (Reserva reserva) throws ClienteConReservaException, ViajeLlenoException{
+    public void  validarReserva (Reserva reserva) throws ClienteConReservaException, ViajeLlenoException, ResesrvaConMuchosAsientos{
         
         Reserva aux = buscarReservaPorCodigoCliente(reserva.getViaje().getCodigo());
         
@@ -32,18 +33,25 @@ public class ClienteController {
             throw new ClienteConReservaException();
         }
         
-        if(!reserva.getViaje().isThereSpace(reserva)){
-            throw new ViajeLlenoException();
+        if(reserva.getViaje().getCuposMaximos() < reserva.getCantidad_sillas()){
+            throw new ResesrvaConMuchosAsientos();
         }
         
          cliente.sumarPuntos((int) reserva.getValor_total()/10000 * 3);
          cliente.agregarReserva(reserva);
          
-         reserva.getViaje().addReserva(reserva);
-         Singleton.getINSTANCE().escribirSingleton();
     }
     
-    public static Viaje obtenerViajePorCodigo (String codigo){
+    public boolean isThereSpace(Reserva reserva) {
+        return reserva.getViaje().isThereSpace(reserva);
+    }
+
+    public void agregarReserva(Reserva reserva) {
+        reserva.getViaje().addReserva(reserva);
+        Singleton.getINSTANCE().escribirSingleton();
+    }
+
+    public static Viaje obtenerViajePorCodigo(String codigo) {
         return ViajeController.obtenerViajePorCodigo(codigo);
     }
     
@@ -58,4 +66,9 @@ public class ClienteController {
         }
         return null;
     }
+    
+    public void enconlarReserva (Reserva reserva){
+        reserva.getViaje().encolarListaEsperta(reserva);
+    }
+    
 }
