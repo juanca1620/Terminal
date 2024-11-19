@@ -55,6 +55,6 @@ public class BucesController {
             throw new IdentificadorRepetidoException("Placa");
         }
         empresa.addBuz(buz);
-        Singleton.getINSTANCE().escribirCasetas();
+        Singleton.getINSTANCE().escribirSingleton();
     }
 }

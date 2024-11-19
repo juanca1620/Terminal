@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import util.IList;
 import util.IQueue;
+import util.Lista;
 import util.Queue;
 
 /**
@@ -17,6 +18,10 @@ import util.Queue;
  */
 public class Viaje implements Serializable{
     
+    public static final String ACTIVO = "Activo";
+    public static final String INACTIVO = "Inactivo";
+    
+    private String codigo;
     private String nombre_empresa;
     private IList<Reserva> reservas;
     private String lugarOrigen;
@@ -27,11 +32,13 @@ public class Viaje implements Serializable{
     private int cuposMaximos;
     private double costo;
     private IQueue<Reserva> listaEspera;
+    private String estado;
     
-    public Viaje(String nombre_empresa, String lugarOrigen, String lugarDestino, LocalDateTime horaInicio, LocalDateTime horaFin, int cuposMaximos,double costo) {
+    public Viaje(String codigo,String nombre_empresa, String lugarOrigen, String lugarDestino, LocalDateTime horaInicio, LocalDateTime horaFin, int cuposMaximos,double costo) {
         if(horaInicio.isAfter(horaFin) || horaInicio.isBefore(LocalDateTime.now()) || horaFin.isBefore(LocalDateTime.now())){
             throw new FechaNoValidaException("del viaje");
         }
+        this.codigo = codigo;
         this.nombre_empresa = nombre_empresa;
         this.lugarOrigen = lugarOrigen;
         this.lugarDestino = lugarDestino;
@@ -41,15 +48,29 @@ public class Viaje implements Serializable{
         this.cuposMaximos = cuposMaximos;
         this.costo = costo;
         this.listaEspera = new Queue<>();
+        this.estado = ACTIVO;
+        this.reservas = new Lista<>();
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     public boolean isThereSpace(Reserva reserva){
+
+        return getCantidadPasajeros() + reserva.getCantidad_sillas() <= cuposMaximos;
+    }
+
+    public int getCantidadPasajeros(){
         int cantidadPasajeros = 0;
         for (int i = 0; i < reservas.size(); i++) {
             cantidadPasajeros+=reservas.get(i).getCantidad_sillas();
         }
-        return cantidadPasajeros + reserva.getCantidad_sillas() <= cuposMaximos;
+        return cantidadPasajeros;
     }
-
     public String getNombre_empresa() {
         return nombre_empresa;
     }
@@ -129,6 +150,17 @@ public class Viaje implements Serializable{
     public void setListaEspera(IQueue<Reserva> listaEspera) {
         this.listaEspera = listaEspera;
     }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
     
+    public void addReserva(Reserva reserva){
+        reservas.add(reserva);
+    }
     
 }

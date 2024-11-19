@@ -46,6 +46,6 @@ public class CasetaController {
         
         this.caseta.addEmpresa(empresa, slots, precio, ciudadOrigen);
         
-        Singleton.getINSTANCE().escribirCasetas();
+        Singleton.getINSTANCE().escribirSingleton();
     }
 }

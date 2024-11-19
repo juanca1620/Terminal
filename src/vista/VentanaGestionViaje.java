@@ -73,6 +73,8 @@ public class VentanaGestionViaje extends javax.swing.JFrame {
         cboHoraLlegada = new javax.swing.JComboBox<>();
         cboHoraSalida = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtCodigo = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,6 +140,8 @@ public class VentanaGestionViaje extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Codigo");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -192,6 +196,12 @@ public class VentanaGestionViaje extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
@@ -231,6 +241,10 @@ public class VentanaGestionViaje extends javax.swing.JFrame {
                                     .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cboHoraLlegada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cboHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -262,11 +276,13 @@ public class VentanaGestionViaje extends javax.swing.JFrame {
             LocalDateTime horaSalida = DateTransformer.DateToLocalDateTime(jdFechaSalida.getDate())
                     .plusHours(Integer.parseInt(cboHoraSalida.getSelectedItem().toString()));
             double costo = Double.parseDouble(txtCosto.getText());
+            String codigo = txtCodigo.getText();
             
             String placa = cboBuces.getSelectedItem().toString();
             Buz buz = controller.obtenerBuzPorPlaca(placa);
             
-            Viaje viaje = controller.crearViaje(destino, horaSalida, horaSalida, costo);
+            
+            Viaje viaje = controller.crearViaje(codigo,destino, horaSalida, horaSalida, costo);
             
             controller.agregarViaje(buz, viaje);
             
@@ -296,11 +312,12 @@ public class VentanaGestionViaje extends javax.swing.JFrame {
         DefaultTableModel model = new DefaultTableModel();
         IList<Viaje> viajes = empresa.getViajes();
         
-        model.setColumnIdentifiers(new Object[]{"Origen","Destino","Hora inicio","Hora fin","Hora creacion","Precio por ticket","Puestos"});
+        model.setColumnIdentifiers(new Object[]{"Codigo","Origen","Destino","Hora inicio","Hora fin","Hora creacion","Precio por ticket","Puestos"});
         
         for (int i = 0; i < viajes.size(); i++) {
             Viaje viaje = viajes.get(i);
             model.addRow(new Object[]{
+                viaje.getCodigo(),
                 viaje.getLugarOrigen(),
                 viaje.getLugarOrigen(),
                 DateFormatter.LocalDateTimeToIso(viaje.getHoraInicio()),
@@ -320,6 +337,7 @@ public class VentanaGestionViaje extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboHoraLlegada;
     private javax.swing.JComboBox<String> cboHoraSalida;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -335,6 +353,7 @@ public class VentanaGestionViaje extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jdFechaLlegada;
     private com.toedter.calendar.JDateChooser jdFechaSalida;
     private javax.swing.JTable tablaViajes;
+    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCosto;
     private javax.swing.JTextField txtDestino;
     // End of variables declaration//GEN-END:variables

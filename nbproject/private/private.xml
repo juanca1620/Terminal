@@ -7,40 +7,46 @@
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/Reserva.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/Caseta.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/Cliente.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/vista/VentanaPrincipalCliente.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/Controlador/RegisterController.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/util/Nodo.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/Buzon.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/exceptions/FechaNacimientoNoValidaException.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/Controlador/ViajeController.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/Canjeo.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/Usuario.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/AdminFlota.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/Persona.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/vista/VentanaLogin.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/vista/VentanaCliente.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/util/Queue.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/Devolucion.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/Buz.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/Controlador/CasetasControllerUtil.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/exceptions/ClienteConReservaException.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/Viaje.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/util/IQueue.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/vista/VentanaRegistroFlota.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/util/DateFormatter.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/util/Lista.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/AdminTerminal.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/vista/VentanaMenuAdminFlota.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/vista/VentanaAdminTerminal.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/vista/VentanaGestionBuses.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/Controlador/AdminTerminalController.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/Controlador/ClienteController.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/util/DateTransformer.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/Controlador/CasetaController.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/Empresa.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/vista/VentanaRegistroCliente.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/vista/VentanaGestionViaje.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/Controlador/LoginController.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/Controlador/ControladorUsers.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/singleton/Singleton.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/exceptions/ViajeLlenoException.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/modelo/Mensaje.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/Controlador/BucesController.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/exceptions/CredencialesInvalidasException.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/exceptions/NoEncontradoException.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Terminal/src/vista/VentanaReservas.java</file>
         </group>
     </open-files>
 </project-private>

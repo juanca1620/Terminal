@@ -50,5 +50,4 @@ public class Usuario implements Serializable{
         return contrasenna;
     }
     
-    
 }

@@ -16,14 +16,17 @@ public class Reserva implements Serializable{
     public static final String ACEPTADA = "Aceptada";
     public static final String INACTIVA = "Inactiva";
     private Cliente cliente;
+    private Viaje viaje;
     private int cantidad_sillas;
     private double valor_total;
     private String estado;
 
-    public Reserva(Cliente cliente, int cantidad_sillas, double valor_total) {
+    public Reserva(Cliente cliente, int cantidad_sillas,Viaje viaje) {
         this.cliente = cliente;
         this.cantidad_sillas = cantidad_sillas;
-        this.valor_total = valor_total;
+        this.valor_total = cantidad_sillas *  viaje.getCosto();
+        this.viaje = viaje;
+        this.estado = ACTIVA;
     }
 
     public Cliente getCliente() {
@@ -49,5 +52,23 @@ public class Reserva implements Serializable{
     public void setValor_total(double valor_total) {
         this.valor_total = valor_total;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Viaje getViaje() {
+        return viaje;
+    }
+
+    public void setViaje(Viaje viaje) {
+        this.viaje = viaje;
+    }
+    
+    
     
 }

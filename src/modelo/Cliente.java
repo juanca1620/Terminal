@@ -4,7 +4,6 @@
  */
 package modelo;
 
-import exceptions.FechaNacimientoNoValidaException;
 import java.time.LocalDateTime;
 import util.IList;
 import util.Lista;
@@ -57,5 +56,9 @@ public class Cliente extends Persona{
     
     public void agregarMensaje(Mensaje mensaje){
         buzon.addMensaje(mensaje);
+    }
+    
+    public void agregarReserva (Reserva reserva){
+        reservas.add(reserva);
     }
 }

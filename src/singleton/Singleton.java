@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import modelo.AdminTerminal;
 import modelo.Caseta;
 import modelo.Usuario;
@@ -18,26 +19,22 @@ import util.Lista;
  *
  * @author USUARIO
  */
-public class Singleton {
+public class Singleton implements Serializable{
     
-    private static final Singleton INSTANCE = new Singleton();
-    private static final String CASETASDATA = "casetas.dat";
-    private static final String USERSDATA = "usuarios.dat";
+    private static final Singleton INSTANCE = leerSingleton();
+    private static final String SINGLETONDATA = "singleton.dat";
     
     private Caseta[][] casetas;
     private IList<Usuario> usuarios;
     
     private Singleton(){
-        casetas = leerCasetas();
-        usuarios = leerUsuarios();
+        casetas = inizializarCasetas();
+        usuarios = new Lista<>();
+        usuarios.add(AdminTerminal.ADMIN_Terminal);
     }
     
-    private Caseta[][] leerCasetas(){
-        try (FileInputStream archivo = new FileInputStream(CASETASDATA);
-             ObjectInputStream lector = new ObjectInputStream(archivo)){
-            return (Caseta[][])lector.readObject();
-        } catch (Exception e) {
-            Caseta[][] casetas = new Caseta[4][];
+    private Caseta[][] inizializarCasetas(){
+                    Caseta[][] casetas = new Caseta[4][];
             for (int i = 0; i < casetas.length; i++) {
                 casetas[i] = new Caseta[i >= 1?2:5];
                 for (int j = 0; j < casetas[i].length; j++) {
@@ -45,38 +42,27 @@ public class Singleton {
                 }
             }
             return casetas;
-        }
     }
     
-    public void escribirCasetas(){
-        try (FileOutputStream archivo = new FileOutputStream(CASETASDATA);
-             ObjectOutputStream escritor = new ObjectOutputStream(archivo)){
-            escritor.writeObject(casetas);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
     
-    private IList<Usuario> leerUsuarios(){
-        try (FileInputStream archivo = new FileInputStream(USERSDATA);
+    private static Singleton leerSingleton(){
+        try (FileInputStream archivo = new FileInputStream(SINGLETONDATA);
              ObjectInputStream lector = new ObjectInputStream(archivo)){
-            return (Lista<Usuario>)lector.readObject();
+             return  (Singleton)lector.readObject();
+             
         } catch (Exception e) {
-            IList<Usuario> usuarios = new Lista<>();
-            usuarios.add(AdminTerminal.ADMIN_Terminal);
-            return usuarios;
-        }
-    }
-    
-    public void escribirUsuarios(){
-        try (FileOutputStream archivo = new FileOutputStream(USERSDATA);
-             ObjectOutputStream escritor = new ObjectOutputStream(archivo)){
-            escritor.writeObject(usuarios);
-        } catch (Exception e) {
-            e.printStackTrace();
+            return new Singleton();
         }
     }
 
+    public void escribirSingleton(){
+        try (FileOutputStream archivo = new FileOutputStream(SINGLETONDATA);
+             ObjectOutputStream escritor = new ObjectOutputStream(archivo)){
+            escritor.writeObject(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static Singleton getINSTANCE() {
         return INSTANCE;
     }

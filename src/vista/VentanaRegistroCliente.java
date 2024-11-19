@@ -178,7 +178,7 @@ public class VentanaRegistroCliente extends javax.swing.JFrame {
             
             this.dispose();
             
-            new VentanaCliente(cliente).setVisible(true);
+            new VentanaPrincipalCliente(cliente).setVisible(true);
             
         }catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());

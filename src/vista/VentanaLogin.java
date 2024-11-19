@@ -135,7 +135,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 Cliente cliente = (Cliente)usuario;
                 this.dispose();
                 this.dispose();
-                new VentanaCliente(cliente).setVisible(true);
+                new VentanaPrincipalCliente(cliente).setVisible(true);
             }
             
         } catch (Exception e) {

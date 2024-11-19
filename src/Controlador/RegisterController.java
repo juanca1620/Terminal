@@ -32,6 +32,6 @@ public class RegisterController {
     public void guardarUsuario(Usuario usuario) throws IdentificadorRepetidoException{
         validarUsuario(usuario);
         Singleton.getINSTANCE().getUsuarios().add(usuario);
-        Singleton.getINSTANCE().escribirUsuarios();
+        Singleton.getINSTANCE().escribirSingleton();
     }
 }
