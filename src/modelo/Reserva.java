@@ -69,6 +69,17 @@ public class Reserva implements Serializable{
         this.viaje = viaje;
     }
     
+    public void devolorverReserva(String razon){
+        this.getViaje().eliminarReserva(this);
+        this.getCliente().eliminarReserva(this);
+        Devolucion devolucion = new Devolucion(this, razon);
+        cliente.agregarDevolucion(devolucion);
+    }
+    
+    public void inscribirReserva (){
+        this.viaje.addReserva(this);
+        this.cliente.agregarReserva(this);
+    }
     
     
 }

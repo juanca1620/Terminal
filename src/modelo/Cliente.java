@@ -25,6 +25,7 @@ public class Cliente extends Persona{
         this.canjeos = new Lista<>();
         this.devoluciones = new Lista<>();
         this.reservas = new Lista<>();
+        this.buzon = new Buzon();
     }
 
     public int getPuntos() {
@@ -60,5 +61,36 @@ public class Cliente extends Persona{
     
     public void agregarReserva (Reserva reserva){
         reservas.add(reserva);
+    }
+    
+    public void eliminarReserva (Reserva reserva){
+        reservas.remove(reserva);
+        restarPuntos((int)(reserva.getValor_total()/10000) * 3);
+    }
+    
+    public void agregarDevolucion(Devolucion devolucion){
+        devoluciones.add(devolucion);
+        Mensaje mensaje = new Mensaje("Sistema", devolucion.getMotivo());
+        agregarMensaje(mensaje);
+    }
+    
+    
+    public void hacerDevolucion(String codigoViaje,String razon){
+        Reserva reserva = encontrarRservaPorCodigo(codigoViaje);
+        
+        reserva.devolorverReserva(razon);
+        
+    }
+    
+    public Reserva encontrarRservaPorCodigo(String codigoViaje){
+                IList<Reserva> reservas = this.reservas;
+        
+        for (int i = 0; i < reservas.size(); i++) {
+            Viaje viaje = reservas.get(i).getViaje();
+            if(viaje.getCodigo().equals(codigoViaje)){
+                return reservas.get(i);
+            }
+        }
+        return null;
     }
 }

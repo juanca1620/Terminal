@@ -7,12 +7,19 @@ package vista;
 
 import Controlador.LoginController;
 import javax.swing.JOptionPane;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.time.LocalDateTime;
 import modelo.AdminFlota;
 import modelo.AdminTerminal;
+import modelo.Buz;
 import modelo.Caseta;
 import modelo.Cliente;
 import modelo.Empresa;
 import modelo.Usuario;
+import modelo.Viaje;
+import singleton.Singleton;
+import util.IList;
 /**
  *
  * @author usuario
@@ -160,6 +167,36 @@ public class VentanaLogin extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Singleton singleton = Singleton.getINSTANCE();
+                Caseta[][] casetas = singleton.getCasetas();
+                LocalDateTime ahora = LocalDateTime.now();
+                
+                for (Caseta[] filaCasetas : casetas) {
+                    for (Caseta caseta : filaCasetas) {
+                        if (caseta.getEmpresa() != null) {
+                            Empresa empresa = caseta.getEmpresa();
+                            IList<Buz> buses = empresa.getBuces();
+                            
+                            for (int i = 0; i < buses.size(); i++) {
+                                Buz bus = buses.get(i);
+                                IList<Viaje> viajes = bus.getViajes();
+                                
+                                for (int j = viajes.size() - 1; j >= 0; j--) {
+                                    if (viajes.get(j).getHoraInicio().isBefore(ahora)) {
+                                        viajes.remove(j);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                singleton.escribirSingleton();
+            }
+        }, 0, 60000);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

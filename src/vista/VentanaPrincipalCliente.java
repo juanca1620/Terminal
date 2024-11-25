@@ -201,10 +201,20 @@ public class VentanaPrincipalCliente extends javax.swing.JFrame {
         });
 
         jButton3.setText("Buzon De Mensajes");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Ver historial de canjeos");
 
         jButton5.setText("Ver historial de cancelaciones");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Tu informacion");
 
@@ -451,6 +461,18 @@ public class VentanaPrincipalCliente extends javax.swing.JFrame {
         this.dispose();
         new VentanaLogin().setVisible(true);
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+
+        this.dispose();
+        new VentanaCancelaciones(cliente).setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        this.dispose();
+        new VentanaBuzonCliente(cliente).setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;

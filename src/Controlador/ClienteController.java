@@ -36,7 +36,7 @@ public class ClienteController {
             throw new ViajeLlenoException();
         }
         
-         cliente.sumarPuntos((int) reserva.getValor_total()/10000);
+         cliente.sumarPuntos((int) reserva.getValor_total()/10000 * 3);
          cliente.agregarReserva(reserva);
          
          reserva.getViaje().addReserva(reserva);

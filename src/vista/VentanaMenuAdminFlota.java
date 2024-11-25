@@ -121,10 +121,10 @@ public class VentanaMenuAdminFlota extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVentaTiquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaTiquetesActionPerformed
-        // TODO add your handling code here:
-       // VentanaVentaTiquetes vvt = new VentanaVentaTiquetes(empresa,admin);
-       // vvt.setVisible(true);
-        //this.dispose();
+         
+        VentanaVentaTiquetes vvt = new VentanaVentaTiquetes(caseta);
+        vvt.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnVentaTiquetesActionPerformed
 
     private void btnGestionBusessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionBusessActionPerformed

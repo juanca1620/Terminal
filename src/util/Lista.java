@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author juanc
+ * @author USUARIO
  */
 public class Lista<T> implements IList<T>,Serializable{
 

@@ -6,7 +6,7 @@ package util;
 
 /**
  *
- * @author juanc
+ * @author USUARIO
  */
 public interface IQueue <T>{
     

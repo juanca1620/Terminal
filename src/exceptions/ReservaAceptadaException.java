@@ -2,23 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package util;
-
-import java.io.Serializable;
+package exceptions;
 
 /**
  *
  * @author USUARIO
  */
-public class Nodo <T> implements Serializable{
+public class ReservaAceptadaException extends Exception{
     
-    T dato;
-    Nodo<T> nodoSiguiente;
-
-    public Nodo(T dato) {
-        this.dato = dato;
-        this.nodoSiguiente = null;
+    public ReservaAceptadaException(){
+        super("Esta reserva esta confirmada, no se puede cancelar");
     }
-    
     
 }

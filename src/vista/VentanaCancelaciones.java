@@ -6,6 +6,7 @@ package vista;
 
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
+import modelo.Devolucion;
 import modelo.Reserva;
 import modelo.Viaje;
 import util.DateFormatter;
@@ -15,13 +16,12 @@ import util.IList;
  *
  * @author USUARIO
  */
-public class VentanaReservas extends javax.swing.JFrame {
+public class VentanaCancelaciones extends javax.swing.JFrame {
 
     private Cliente cliente;
-    
-    public VentanaReservas(Cliente cliente) {
-        initComponents();
+    public VentanaCancelaciones(Cliente cliente) {
         this.cliente = cliente;
+        initComponents();
         llenarTablas();
     }
 
@@ -35,12 +35,13 @@ public class VentanaReservas extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaReservas = new javax.swing.JTable();
+        tablaCancelaciones = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tablaReservas.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCancelaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -51,7 +52,9 @@ public class VentanaReservas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tablaReservas);
+        jScrollPane1.setViewportView(tablaCancelaciones);
+
+        jLabel1.setText("Historial Cancelaciones");
 
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,19 +68,26 @@ public class VentanaReservas extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 398, Short.MAX_VALUE)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(42, 42, 42))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -87,17 +97,18 @@ public class VentanaReservas extends javax.swing.JFrame {
 
         this.dispose();
         new VentanaPrincipalCliente(cliente).setVisible(true);
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void llenarTablas() {
-        IList<Reserva> reservas = cliente.getReservas();
+    private void llenarTablas(){
+        IList<Devolucion> devoluciones = cliente.getDevoluciones();
+                
         DefaultTableModel model = new DefaultTableModel();
 
-        model.setColumnIdentifiers(new Object[]{"Codigo", "Origen", "Destino", "Hora inicio", "Hora fin", "Hora creacion", "Precio por ticket", "Puestos"});
+        model.setColumnIdentifiers(new Object[]{"Codigo", "Origen", "Destino", "Hora inicio", "Hora fin", "Hora creacion", "Precio por ticket","Movito"});
 
-        for (int i = 0; i < reservas.size(); i++) {
-            Reserva reserva = reservas.get(i);
+        for (int i = 0; i < devoluciones.size(); i++) {
+            Devolucion devolucion = devoluciones.get(i);
+            Reserva reserva = devolucion.getReserva();
             Viaje viaje = reserva.getViaje();
             model.addRow(new Object[]{
                 viaje.getCodigo(),
@@ -107,16 +118,18 @@ public class VentanaReservas extends javax.swing.JFrame {
                 DateFormatter.LocalDateTimeToIso(viaje.getHoraFin()),
                 DateFormatter.LocalDateTimeToIso(viaje.getFechaCreacion()),
                 viaje.getCosto(),
-                viaje.getCuposMaximos()
+                devolucion.getMotivo()
             });
         }
         
-        tablaReservas.setModel(model);
+        tablaCancelaciones.setModel(model);
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaReservas;
+    private javax.swing.JTable tablaCancelaciones;
     // End of variables declaration//GEN-END:variables
 }

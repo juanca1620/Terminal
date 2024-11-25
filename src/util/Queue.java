@@ -10,7 +10,7 @@ import util.Nodo;
 
 /**
  *
- * @author juanc
+ * @author USUARIO
  */
 public class Queue <T> implements IQueue<T>,Serializable{
 

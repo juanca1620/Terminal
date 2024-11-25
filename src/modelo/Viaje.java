@@ -163,4 +163,18 @@ public class Viaje implements Serializable{
         reservas.add(reserva);
     }
     
+    public void eliminarReserva(Reserva reserva){
+        reservas.remove(reserva);
+    }
+    
+    public Cliente obtenerClientePorCedula(String cedula){
+        for (int i = 0; i < reservas.size(); i++) {
+            Cliente cliente = reservas.get(i).getCliente();
+            if(cedula.equals(cliente.getCedula())){
+                return cliente;
+            }
+        }
+        return null;
+    }
+    
 }

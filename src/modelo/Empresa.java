@@ -79,4 +79,18 @@ public class Empresa implements Serializable {
     public void addBuz(Buz buz){
         buces.add(buz);
     }
+
+    public Viaje obtenerViajePorCodigo(String codigo) {
+
+        IList<Viaje> viajes = this.getViajes();
+
+        for (int k = 0; k < viajes.size(); k++) {
+            Viaje viaje = viajes.get(k);
+
+            if (viaje.getCodigo().equals(codigo)) {
+                return viaje;
+            }
+        }
+        return null;
+    }
 }
